@@ -4,12 +4,12 @@ export default {
   theme: {
     extend: {
       fontSize: {
-        base: '10px',
+        base: '10px'
       },
       fontFamily: {
-        sans: ['Barlow Condensed', 'sans-serif'],
-      },
-    },
+        sans: ['Barlow Condensed', 'sans-serif']
+      }
+    }
   },
-  plugins: [],
+  plugins: []
 };
