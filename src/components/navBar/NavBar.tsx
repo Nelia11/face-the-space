@@ -1,15 +1,9 @@
 import { useState } from 'react';
 import logo from '../../assets/logo.svg';
+import MenuItem from '../menuItem/menuItem';
 
 const NavBar = () => {
-  const [activeIndex, setActiveIndex] = useState(0);
-
-  const menuItems: { id: string; label: string }[] = [
-    { id: '00', label: 'home' },
-    { id: '01', label: 'destination' },
-    { id: '02', label: 'crew' },
-    { id: '03', label: 'technology' }
-  ];
+  const [activeIndex, setActiveIndex] = useState('00');
 
   return (
     <div className="flex items-center justify-center fixed h-[10rem] w-full max-w-[1440px]">
@@ -25,18 +19,30 @@ const NavBar = () => {
             style={{ backgroundColor: 'rgba(255, 255, 255, 0.05)' }}
           >
             <div className="flex items-center justify-between list-none space-x-14 text-white uppercase mr-20 ml-40 text-[1.6rem]">
-              {menuItems.map((item, index) => (
-                <div
-                  key={item.id}
-                  className={`flex items-center h-[10rem] ${activeIndex === index && 'border-b-2 border-white'}`}
-                  onClick={() => setActiveIndex(index)}
-                >
-                  <div className="cursor-pointer">
-                    <span className="font-bold">{item.id} </span>
-                    {item.label}
-                  </div>
-                </div>
-              ))}
+              <MenuItem
+                index="00"
+                text="home"
+                activeIndex={activeIndex}
+                setActiveIndex={setActiveIndex}
+              />
+              <MenuItem
+                index="01"
+                text="destination"
+                activeIndex={activeIndex}
+                setActiveIndex={setActiveIndex}
+              />
+              <MenuItem
+                index="02"
+                text="crew"
+                activeIndex={activeIndex}
+                setActiveIndex={setActiveIndex}
+              />
+              <MenuItem
+                index="03"
+                text="technology"
+                activeIndex={activeIndex}
+                setActiveIndex={setActiveIndex}
+              />
             </div>
           </nav>
         </div>
