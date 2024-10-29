@@ -1,23 +1,42 @@
 import NavBar from '../components/navBar/NavBar';
-import background from '../assets/background-home-desktop.jpg';
+import backgroundDesktop from '../assets/background-home-desktop.jpg';
+import backgroundTablet from '../assets/background-home-tablet.jpg';
+import backgroundMobile from '../assets/background-home-mobile.jpg';
 
 const Home = () => {
   return (
-    <div
-      className="relative h-screen w-screen bg-cover bg-center"
-      style={{ backgroundImage: `url(${background})` }}
-    >
+    <div className="relative h-screen w-screen bg-cover bg-center">
+      {/* Responsive Background Images for Tablet and Desktop */}
+      <div
+        className="absolute inset-0 bg-cover bg-center z-0"
+        style={{
+          backgroundImage: `url(${backgroundMobile})`,
+        }}
+      ></div>
+      <div
+        className="absolute inset-0 bg-cover bg-center z-0 hidden md:block lg:hidden"
+        style={{
+          backgroundImage: `url(${backgroundTablet})`,
+        }}
+      ></div>
+      <div
+        className="absolute inset-0 bg-cover bg-center z-0 hidden lg:block"
+        style={{
+          backgroundImage: `url(${backgroundDesktop})`,
+        }}
+      ></div>
+
       {/* Navbar */}
       <div className="absolute top-0 w-full z-10">
         <NavBar />
       </div>
 
       {/* Main Content */}
-      <div className="flex items-center justify-center h-full w-full px-10 text-white z-10 pt-20">
-        {/* Outer Container with Justify Between for Left-Right Alignment */}
-        <div className="flex flex-row items-start justify-between w-full max-w-6xl">
-          {/* Left Column - Text Content Aligned to the Left */}
-          <div className="flex flex-col space-y-4 max-w-md text-left pl-10"> {/* Added pl-10 to move text left */}
+      <div className="relative flex items-center justify-center h-full w-full px-5 md:px-10 text-white z-10 pt-20">
+        {/* Outer Container with Responsive Layout for Mobile, Tablet, and Desktop */}
+        <div className="flex flex-col lg:flex-row items-center lg:items-start justify-center lg:justify-between w-full max-w-6xl">
+          {/* Left Column - Text Content with Responsive Center Alignment on Mobile and Tablet */}
+          <div className="flex flex-col space-y-4 max-w-md lg:max-w-md text-center md:text-center lg:text-left px-5 lg:px-10">
             {/* Subtitle */}
             <h2 className="text-lg md:text-xl tracking-widest text-gray-300 uppercase">
               So, you want to travel to
@@ -32,9 +51,9 @@ const Home = () => {
             </p>
           </div>
 
-          {/* Right Column - Explore Button Aligned to the Right, Larger and Lower */}
-          <div className="flex items-center justify-center pr-10 mt-20"> {/* Increased mt-20 to move button further down */}
-            <div className="bg-white text-black w-40 h-40 md:w-52 md:h-52 lg:w-60 lg:h-60 rounded-full flex items-center justify-center cursor-pointer shadow-lg transition-transform transform hover:scale-105">
+          {/* Right Column - Explore Button with Adjusted Position on Laptop/Desktop */}
+          <div className="flex items-center justify-center mt-10 md:mt-20 lg:mt-16 lg:ml-20"> {/* Set lg:mt-16 to raise the button slightly on larger screens */}
+            <div className="bg-white text-black w-32 h-32 md:w-40 md:h-40 lg:w-60 lg:h-60 rounded-full flex items-center justify-center cursor-pointer shadow-lg transition-transform transform hover:scale-105">
               <span className="text-lg md:text-xl lg:text-2xl uppercase tracking-widest">Explore</span>
             </div>
           </div>
