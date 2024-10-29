@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import logo from '../../assets/logo.svg';
-import MenuItem from '../menuItem/menuItem';
+import MenuItem from '../menuItem/MenuItem.tsx';
 
 const NavBar = () => {
   const [activeIndex, setActiveIndex] = useState('00');
