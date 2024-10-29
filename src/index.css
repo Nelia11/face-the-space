@@ -2,6 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-body {
-  @apply font-sans text-base;
+html {
+  font-size: 10px;
 }

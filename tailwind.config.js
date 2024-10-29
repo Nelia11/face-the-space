@@ -3,11 +3,14 @@ export default {
   content: ['./index.html', './src/**/*.{js,ts,jsx,tsx}'],
   theme: {
     extend: {
-      fontSize: {
-        base: '10px'
-      },
       fontFamily: {
         sans: ['Barlow Condensed', 'sans-serif']
+      },
+      screens: {
+        phone: '376px',
+        tablet: '769px',
+        desktop: '1440px',
+        sm501: '501px'
       }
     }
   },
