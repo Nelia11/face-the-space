@@ -1,16 +1,21 @@
 import { FC } from 'react';
 
-interface MenuItemProps {
+interface MenuItemDesktopProps {
   index: string;
   text: string;
   activeIndex: string;
   setActiveIndex: (index: string) => void;
 }
 
-const MenuItem: FC<MenuItemProps> = ({ index, text, activeIndex, setActiveIndex }) => {
+const MenuItemDesktop: FC<MenuItemDesktopProps> = ({
+  index,
+  text,
+  activeIndex,
+  setActiveIndex
+}) => {
   return (
     <div
-      className={`flex items-center h-[10rem] ${activeIndex === index && 'border-b-2 border-white'}`}
+      className={`flex items-center h-[5rem] ${activeIndex === index && 'border-b-2 border-white'}`}
       onClick={() => setActiveIndex(index)}
     >
       <div className="cursor-pointer">
@@ -21,4 +26,4 @@ const MenuItem: FC<MenuItemProps> = ({ index, text, activeIndex, setActiveIndex 
   );
 };
 
-export default MenuItem;
+export default MenuItemDesktop;
