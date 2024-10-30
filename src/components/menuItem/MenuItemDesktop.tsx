@@ -15,7 +15,7 @@ const MenuItemDesktop: FC<MenuItemDesktopProps> = ({
 }) => {
   return (
     <div
-      className={`flex items-center h-[5rem] ${activeIndex === index && 'border-b-2 border-white'}`}
+      className={`flex items-center h-[2.78rem] ${activeIndex === index && 'border-b-2 border-white'}`}
       onClick={() => setActiveIndex(index)}
     >
       <div className="cursor-pointer">
