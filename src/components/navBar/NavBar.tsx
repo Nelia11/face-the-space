@@ -1,17 +1,39 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import logo from '../../assets/logo.svg';
 import iconHamburger from '../../assets/icon-hamburger.svg';
 import iconClose from '../../assets/icon-close.svg';
 import MenuItemDesktop from '../menuItem/MenuItemDesktop.tsx';
 import MenuItemMob from '../menuItem/MenuItemMobile.tsx';
+import { Link, useLocation } from 'react-router-dom';
 
 const NavBar = () => {
-  const [activeIndex, setActiveIndex] = useState('00');
+  const [activeIndex, setActiveIndex] = useState('');
   const [isMobMenuOpen, setIsMobMenuOpen] = useState(false);
+
+  const location = useLocation();
 
   const toggleMenu = () => {
     setIsMobMenuOpen(!isMobMenuOpen);
   };
+
+  useEffect(() => {
+    switch (location.pathname) {
+      case '/':
+        setActiveIndex('00');
+        break;
+      case '/destination':
+        setActiveIndex('01');
+        break;
+      case '/crew':
+        setActiveIndex('02');
+        break;
+      case '/technology':
+        setActiveIndex('03');
+        break;
+      default:
+        setActiveIndex('');
+    }
+  }, [location.pathname, setActiveIndex]);
 
   return (
     <>
@@ -32,30 +54,38 @@ const NavBar = () => {
             <img src={iconClose} onClick={toggleMenu} alt="icon-close" className="mr-[2rem]" />
           </div>
           <div>
-            <MenuItemMob
-              index="00"
-              text="home"
-              activeIndex={activeIndex}
-              setActiveIndex={setActiveIndex}
-            />
-            <MenuItemMob
-              index="01"
-              text="destination"
-              activeIndex={activeIndex}
-              setActiveIndex={setActiveIndex}
-            />
-            <MenuItemMob
-              index="02"
-              text="crew"
-              activeIndex={activeIndex}
-              setActiveIndex={setActiveIndex}
-            />
-            <MenuItemMob
-              index="03"
-              text="technology"
-              activeIndex={activeIndex}
-              setActiveIndex={setActiveIndex}
-            />
+            <Link to="/">
+              <MenuItemMob
+                index="00"
+                text="home"
+                activeIndex={activeIndex}
+                setActiveIndex={setActiveIndex}
+              />
+            </Link>
+            <Link to="destination">
+              <MenuItemMob
+                index="01"
+                text="destination"
+                activeIndex={activeIndex}
+                setActiveIndex={setActiveIndex}
+              />
+            </Link>
+            <Link to="/crew">
+              <MenuItemMob
+                index="02"
+                text="crew"
+                activeIndex={activeIndex}
+                setActiveIndex={setActiveIndex}
+              />
+            </Link>
+            <Link to="technology">
+              <MenuItemMob
+                index="03"
+                text="technology"
+                activeIndex={activeIndex}
+                setActiveIndex={setActiveIndex}
+              />
+            </Link>
           </div>
         </div>
       )}
@@ -76,30 +106,38 @@ const NavBar = () => {
               style={{ backgroundColor: 'rgba(255, 255, 255, 0.05)' }}
             >
               <div className="flex items-center justify-between list-none space-x-14 text-white uppercase mr-10 ml-10 text-[1.8rem]">
-                <MenuItemDesktop
-                  index="00"
-                  text="home"
-                  activeIndex={activeIndex}
-                  setActiveIndex={setActiveIndex}
-                />
-                <MenuItemDesktop
-                  index="01"
-                  text="destination"
-                  activeIndex={activeIndex}
-                  setActiveIndex={setActiveIndex}
-                />
-                <MenuItemDesktop
-                  index="02"
-                  text="crew"
-                  activeIndex={activeIndex}
-                  setActiveIndex={setActiveIndex}
-                />
-                <MenuItemDesktop
-                  index="03"
-                  text="technology"
-                  activeIndex={activeIndex}
-                  setActiveIndex={setActiveIndex}
-                />
+                <Link to="/">
+                  <MenuItemDesktop
+                    index="00"
+                    text="home"
+                    activeIndex={activeIndex}
+                    setActiveIndex={setActiveIndex}
+                  />
+                </Link>
+                <Link to="destination">
+                  <MenuItemDesktop
+                    index="01"
+                    text="destination"
+                    activeIndex={activeIndex}
+                    setActiveIndex={setActiveIndex}
+                  />
+                </Link>
+                <Link to="/crew">
+                  <MenuItemDesktop
+                    index="02"
+                    text="crew"
+                    activeIndex={activeIndex}
+                    setActiveIndex={setActiveIndex}
+                  />
+                </Link>
+                <Link to="technology">
+                  <MenuItemDesktop
+                    index="03"
+                    text="technology"
+                    activeIndex={activeIndex}
+                    setActiveIndex={setActiveIndex}
+                  />
+                </Link>
               </div>
             </nav>
           </div>
