@@ -53,7 +53,6 @@ const destinations: Record<DestinationKey, Destination> = {
 };
 
 const Destination = () => {
-  // Now selectedDestination is strictly typed as one of the keys of destinations
   const [selectedDestination, setSelectedDestination] = useState<DestinationKey>('Mars');
 
   const destination = destinations[selectedDestination];
@@ -80,26 +79,30 @@ const Destination = () => {
       ></div>
 
       {/* Main Content */}
-      <div className="relative flex items-center justify-center h-full w-full px-5 md:px-10 z-10 pt-20 lg:pt-32">
-        <div className="flex flex-col lg:flex-row items-center lg:items-start justify-center lg:justify-between w-full max-w-6xl space-y-10 lg:space-y-0 lg:space-x-20">
-          {/* Left Column - Planet Image */}
-          <div className="w-full lg:w-1/2 flex justify-center lg:justify-end">
+      <div className="relative flex flex-col items-center justify-center h-full w-full px-5 md:px-20 lg:px-32 z-10 mt-1 lg:mt-3">
+        {/* Section Title - Moved Right and Styled */}
+        <div className="w-full flex items-start mb-5 ml-16 lg:ml-28">
+          <h2 className="text-xl md:text-2xl lg:text-3xl uppercase tracking-widest">
+            <span className="text-gray-400">01</span>{' '}
+            <span style={{ color: '#E5E5E5' }}>Pick Your Destination</span>
+          </h2>
+        </div>
+
+        {/* Main Content Area */}
+        <div className="flex flex-col lg:flex-row items-center lg:items-start justify-between w-full space-y-10 lg:space-y-0 lg:space-x-20">
+          {/* Left Column - Planet Image with More Right Padding */}
+          <div className="w-full lg:w-1/2 flex justify-center lg:justify-start pl-28 mt-5">
             <img
               src={destination.image}
               alt={destination.title}
-              className="w-80 md:w-96 lg:w-full max-w-md"
+              className="w-56 md:w-72 lg:w-full max-w-xs lg:max-w-sm"
             />
           </div>
 
           {/* Right Column - Destination Info */}
-          <div className="flex flex-col items-center lg:items-start text-center lg:text-left max-w-lg space-y-6 lg:space-y-10">
-            {/* Subtitle above the tabs */}
-            <h2 className="text-sm md:text-base tracking-widest text-gray-300 uppercase">
-              01 Pick Your Destination
-            </h2>
-
-            {/* Tabs for destinations */}
-            <div className="flex space-x-5 text-gray-300 uppercase tracking-widest">
+          <div className="flex flex-col items-center lg:items-start text-center lg:text-left max-w-lg space-y-6 lg:space-y-8">
+            {/* Destination Tabs - Styled in Muted Gray */}
+            <div className="flex space-x-6 text-gray-400 uppercase tracking-widest">
               {Object.keys(destinations).map((key) => (
                 <span
                   key={key}
@@ -113,29 +116,29 @@ const Destination = () => {
               ))}
             </div>
 
-            {/* Main Title */}
-            <h1 className="text-5xl md:text-7xl lg:text-8xl font-bold uppercase">
+            {/* Destination Title - White */}
+            <h1 className="text-white text-5xl md:text-7xl lg:text-8xl font-bold uppercase">
               {destination.title}
             </h1>
 
-            {/* Description */}
-            <p className="text-sm md:text-base lg:text-lg text-gray-300 leading-relaxed max-w-md">
+            {/* Description - Muted Gray */}
+            <p className="text-gray-400 text-sm md:text-base lg:text-lg leading-relaxed max-w-md">
               {destination.description}
             </p>
 
             {/* Statistics */}
-            <div className="flex flex-col md:flex-row items-center md:items-start justify-between w-full space-y-6 md:space-y-0 md:space-x-10">
+            <div className="flex flex-col md:flex-row items-center md:items-start justify-between w-full space-y-6 md:space-y-0 md:space-x-8 border-t border-gray-600 pt-4">
               <div className="flex flex-col items-center md:items-start">
-                <h3 className="text-sm uppercase text-gray-300 tracking-widest">Avg. Distance</h3>
-                <p className="text-2xl md:text-3xl lg:text-4xl font-semibold uppercase">
+                <h3 className="text-gray-400 text-sm uppercase tracking-widest">Avg. Distance</h3>
+                <p className="text-white text-2xl md:text-3xl lg:text-4xl font-semibold uppercase">
                   {destination.distance}
                 </p>
               </div>
               <div className="flex flex-col items-center md:items-start">
-                <h3 className="text-sm uppercase text-gray-300 tracking-widest">
+                <h3 className="text-gray-400 text-sm uppercase tracking-widest">
                   Est. Travel Time
                 </h3>
-                <p className="text-2xl md:text-3xl lg:text-4xl font-semibold uppercase">
+                <p className="text-white text-2xl md:text-3xl lg:text-4xl font-semibold uppercase">
                   {destination.travelTime}
                 </p>
               </div>
