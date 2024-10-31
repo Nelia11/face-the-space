@@ -29,8 +29,8 @@ const Home = () => {
       <div className="relative flex items-center justify-center h-full w-full px-5 md:px-10 text-white z-10 pt-20">
         {/* Outer Container with Responsive Layout for Mobile, Tablet, and Desktop */}
         <div className="flex flex-col lg:flex-row items-center lg:items-start justify-center lg:justify-between w-full max-w-6xl">
-          {/* Left Column - Text Content with Responsive Center Alignment on Mobile and Tablet */}
-          <div className="flex flex-col space-y-4 max-w-md lg:max-w-md text-center md:text-center lg:text-left px-5 lg:px-10">
+          {/* Left Column - Text Content with More Right Positioning on Desktop */}
+          <div className="flex flex-col space-y-4 max-w-md lg:max-w-md text-center md:text-center lg:text-left px-5 lg:px-10 lg:pl-20">
             {/* Subtitle */}
             <h2 className="text-lg md:text-xl tracking-widest text-gray-300 uppercase">
               So, you want to travel to
@@ -49,7 +49,6 @@ const Home = () => {
 
           {/* Right Column - Explore Button with Adjusted Position on Laptop/Desktop */}
           <div className="flex items-center justify-center mt-10 md:mt-20 lg:mt-16 lg:ml-20">
-            {/* Set lg:mt-16 to raise the button slightly on larger screens */}
             <div className="bg-white text-black w-32 h-32 md:w-40 md:h-40 lg:w-60 lg:h-60 rounded-full flex items-center justify-center cursor-pointer shadow-lg transition-transform transform hover:scale-105">
               <span className="text-lg md:text-xl lg:text-2xl uppercase tracking-widest">
                 Explore
@@ -63,3 +62,4 @@ const Home = () => {
 };
 
 export default Home;
+
