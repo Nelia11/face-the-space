@@ -38,7 +38,7 @@ const NavBar = () => {
   return (
     <>
       {/* phone */}
-      <div className="flex phone:hidden items-center justify-between h-[8.8rem] w-full absolute pl-5 pr-5 z-10">
+      <div className="flex phone:hidden items-center justify-between h-[8.8rem] w-full absolute pl-5 pr-5 z-20">
         <img src={logo} alt="logo" className="h-[4rem]" />
         <img
           src={iconHamburger}
@@ -49,8 +49,8 @@ const NavBar = () => {
       </div>
 
       {isMobMenuOpen && (
-        <div className="phone:hidden flex-col h-[8.8rem] w-[25.4rem] absolute right-0 h-screen backdrop-blur bg-gray-900 bg-opacity-10 z-10">
-          <div className="flex h-[8.8rem] items-center justify-end w-[25.4rem]">
+        <div className="phone:hidden flex-col h-[8.8rem] w-[15.875rem] absolute right-0 h-screen backdrop-blur-lg bg-gray-900 bg-opacity-10 z-20">
+          <div className="flex h-[8.8rem] items-center justify-end w-full">
             <img src={iconClose} onClick={toggleMenu} alt="icon-close" className="mr-[2rem]" />
           </div>
           <div>
@@ -91,21 +91,21 @@ const NavBar = () => {
       )}
 
       {/* tablet and desktop */}
-      <div className="hidden phone:flex items-center justify-center absolute w-full max-w-[1440px] mt-[1rem] z-10">
+      <div className="hidden phone:flex items-center justify-center absolute w-full max-w-[1440px] mt-[0.625rem] z-20">
         <div className="flex items-center justify-between w-full">
-          <div className="hidden sm501:flex items-center justify-center w-[10rem] z-10">
+          <div className="hidden sm501:flex items-center justify-center w-[6.25rem] z-10">
             <img src={logo} alt="logo" />
           </div>
           <div className="flex items-center relative">
             <div
-              className="flex hidden tablet:block h-[.1rem] bg-white w-[60rem] absolute ml-[-55rem]"
+              className="flex hidden tablet:block h-[0.01rem] bg-white w-[37.5rem] absolute ml-[-34.4rem]"
               style={{ backgroundColor: 'rgba(255, 255, 255, 0.25)' }}
             ></div>
             <nav
-              className="flex items-center justify-center h-[9.8rem] tablet:w-[64rem]"
+              className="flex items-center justify-center h-[6.125rem] tablet:w-[40rem]"
               style={{ backgroundColor: 'rgba(255, 255, 255, 0.05)' }}
             >
-              <div className="flex items-center justify-between list-none space-x-14 text-white uppercase mr-10 ml-10 text-[1.8rem]">
+              <div className="flex items-center justify-between list-none space-x-6 text-white uppercase mr-5 ml-5 text-[1.125rem]">
                 <Link to="/">
                   <MenuItemDesktop
                     index="00"
