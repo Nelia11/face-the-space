@@ -62,7 +62,7 @@ const NavBar = () => {
                 setActiveIndex={setActiveIndex}
               />
             </Link>
-            <Link to="destination">
+            <Link to="/destination">
               <MenuItemMob
                 index="01"
                 text="destination"
@@ -78,7 +78,7 @@ const NavBar = () => {
                 setActiveIndex={setActiveIndex}
               />
             </Link>
-            <Link to="technology">
+            <Link to="/technology">
               <MenuItemMob
                 index="03"
                 text="technology"
@@ -114,7 +114,7 @@ const NavBar = () => {
                     setActiveIndex={setActiveIndex}
                   />
                 </Link>
-                <Link to="destination">
+                <Link to="/destination">
                   <MenuItemDesktop
                     index="01"
                     text="destination"
@@ -130,7 +130,7 @@ const NavBar = () => {
                     setActiveIndex={setActiveIndex}
                   />
                 </Link>
-                <Link to="technology">
+                <Link to="/technology">
                   <MenuItemDesktop
                     index="03"
                     text="technology"
@@ -148,4 +148,3 @@ const NavBar = () => {
 };
 
 export default NavBar;
-
