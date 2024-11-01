@@ -98,7 +98,7 @@ const NavBar = () => {
           </div>
           <div className="flex items-center relative">
             <div
-              className="flex hidden tablet:block h-[0.01rem] bg-white w-[37.5rem] absolute ml-[-34.4rem]"
+              className="flex hidden tablet:block h-[0.01rem] bg-white w-[45rem] absolute ml-[-38rem]"
               style={{ backgroundColor: 'rgba(255, 255, 255, 0.25)' }}
             ></div>
             <nav
@@ -148,3 +148,4 @@ const NavBar = () => {
 };
 
 export default NavBar;
+
