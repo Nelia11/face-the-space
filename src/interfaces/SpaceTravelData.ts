@@ -1,12 +1,11 @@
 export interface SpaceTravelData {
-  destinations: Destination[];
+  destinations: TravelDestination[];
   crew: CrewMember[];
   technology: Technology[];
 }
 
-export interface Destination {
+export interface TravelDestination {
   name: string;
-  images: ImageFormats;
   description: string;
   distance: string;
   travel: string;
@@ -22,11 +21,6 @@ export interface Technology {
   name: string;
   images: TechnologyImages;
   description: string;
-}
-
-export interface ImageFormats {
-  png: string;
-  webp: string;
 }
 
 export interface TechnologyImages {

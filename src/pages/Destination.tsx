@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, FC } from 'react';
 import backgroundDesktop from '../assets/destination/background-destination-desktop.jpg';
 import backgroundTablet from '../assets/destination/background-destination-tablet.jpg';
 import backgroundMobile from '../assets/destination/background-destination-mobile.jpg';
@@ -6,54 +6,35 @@ import marsImage from '../assets/destination/image-mars.png';
 import moonImage from '../assets/destination/image-moon.png';
 import europaImage from '../assets/destination/image-europa.png';
 import titanImage from '../assets/destination/image-titan.png';
+import { TravelDestination } from '../interfaces/SpaceTravelData';
 
-type DestinationKey = 'Mars' | 'Moon' | 'Europa' | 'Titan';
+interface DestinationProps {
+  testdestinations: TravelDestination[];
+}
 
-type Destination = {
-  image: string;
-  title: string;
-  description: string;
-  distance: string;
-  travelTime: string;
-};
+const Destination: FC<DestinationProps> = ({ testdestinations }) => {
+  const mappedDestination = testdestinations.map((destination) => {
+    switch (destination.name) {
+      case 'Moon':
+        return { ...destination, image: moonImage };
+      case 'Mars':
+        return { ...destination, image: marsImage };
+      case 'Europa':
+        return { ...destination, image: europaImage };
+      case 'Titan':
+        return { ...destination, image: titanImage };
+      default:
+        return { ...destination, image: '' };
+    }
+  });
 
-const destinations: Record<DestinationKey, Destination> = {
-  Mars: {
-    image: marsImage,
-    title: 'Mars',
-    description:
-      'Don’t forget to pack your hiking boots. You’ll need them to tackle Olympus Mons, the tallest planetary mountain in our solar system. It’s two and a half times the size of Everest!',
-    distance: '225 Mil. KM',
-    travelTime: '9 Months'
-  },
-  Moon: {
-    image: moonImage,
-    title: 'Moon',
-    description:
-      'Visit our closest celestial neighbor. The moon is full of craters, lunar maria, and more for explorers to discover.',
-    distance: '384,400 KM',
-    travelTime: '3 Days'
-  },
-  Europa: {
-    image: europaImage,
-    title: 'Europa',
-    description:
-      'The icy moon of Jupiter. A vast ocean lies beneath its surface, making it a fascinating place for scientific discovery.',
-    distance: '628 Mil. KM',
-    travelTime: '6 Years'
-  },
-  Titan: {
-    image: titanImage,
-    title: 'Titan',
-    description:
-      'Saturn’s largest moon, known for its dense atmosphere and lakes of liquid methane. Titan offers an otherworldly experience.',
-    distance: '1.2 Bil. KM',
-    travelTime: '7 Years'
-  }
-};
+  const [selectedDestination, setSelectedDestination] = useState(mappedDestination[0]);
+  const [selectedIndex, setSelectedIndex] = useState(0);
 
-const Destination = () => {
-  const [selectedDestination, setSelectedDestination] = useState<DestinationKey>('Mars');
+  const handleDestinationClick = (index: number) => {
+    setSelectedIndex(index);
+    setSelectedDestination(mappedDestination[index]);
+  };
 
   useEffect(() => {
     const setVh = () => {
@@ -64,8 +45,6 @@ const Destination = () => {
     window.addEventListener('resize', setVh); // Update on resize
     return () => window.removeEventListener('resize', setVh); // Clean up
   }, []);
-
-  const destination = destinations[selectedDestination];
 
   return (
     <div
@@ -115,8 +94,8 @@ const Destination = () => {
           {/* Left Column - Centered Image */}
           <div className="w-full lg:w-1/2 flex justify-center lg:justify-start lg:pl-28 mt-5">
             <img
-              src={destination.image}
-              alt={destination.title}
+              src={selectedDestination.image}
+              alt={selectedDestination.name}
               className="w-48 sm:w-56 md:w-64 lg:w-full max-w-xs lg:max-w-sm"
             />
           </div>
@@ -125,27 +104,27 @@ const Destination = () => {
           <div className="flex flex-col items-center lg:items-start text-center lg:text-left max-w-lg space-y-4 sm:space-y-5 md:space-y-6 lg:space-y-8 px-4 sm:px-6 lg:px-0">
             {/* Destination Tabs */}
             <div className="flex space-x-4 sm:space-x-5 md:space-x-6 text-gray-400 uppercase tracking-widest text-xs sm:text-sm md:text-base">
-              {Object.keys(destinations).map((key) => (
+              {mappedDestination.map((destination, index) => (
                 <span
-                  key={key}
-                  onClick={() => setSelectedDestination(key as DestinationKey)}
+                  key={index}
+                  onClick={() => handleDestinationClick(index)}
                   className={`cursor-pointer hover:text-white ${
-                    selectedDestination === key ? 'border-b-2 border-white text-white' : ''
+                    selectedIndex === index ? 'border-b-2 border-white text-white' : ''
                   }`}
                 >
-                  {key}
+                  {destination.name}
                 </span>
               ))}
             </div>
 
-            {/* Destination Title */}
+            {/* Destination Name */}
             <h1 className="text-white text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold uppercase">
-              {destination.title}
+              {selectedDestination.name}
             </h1>
 
             {/* Description */}
             <p className="text-gray-400 text-xs sm:text-sm md:text-base lg:text-lg leading-relaxed max-w-md">
-              {destination.description}
+              {selectedDestination.description}
             </p>
 
             {/* Statistics */}
@@ -155,7 +134,7 @@ const Destination = () => {
                   Avg. Distance
                 </h3>
                 <p className="text-white text-lg sm:text-xl md:text-2xl lg:text-3xl font-semibold uppercase">
-                  {destination.distance}
+                  {selectedDestination.distance}
                 </p>
               </div>
               <div className="flex flex-col items-center sm:items-start">
@@ -163,7 +142,7 @@ const Destination = () => {
                   Est. Travel Time
                 </h3>
                 <p className="text-white text-lg sm:text-xl md:text-2xl lg:text-3xl font-semibold uppercase">
-                  {destination.travelTime}
+                  {selectedDestination.travel}
                 </p>
               </div>
             </div>
