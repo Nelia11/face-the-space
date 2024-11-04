@@ -116,4 +116,3 @@ const TechnologyPage = () => {
 };
 
 export default TechnologyPage;
-
