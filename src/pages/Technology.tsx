@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import backgroundDesktop from '../assets/technology/background-technology-desktop.jpg';
 import backgroundTablet from '../assets/technology/background-technology-tablet.jpg';
 import backgroundMobile from '../assets/technology/background-technology-mobile.jpg';
@@ -11,6 +11,14 @@ import spaceportPortrait from '../assets/technology/image-spaceport-portrait.jpg
 
 const TechnologyPage = () => {
   const [selectedTechnology, setSelectedTechnology] = useState(1);
+  const [isDesktop, setIsDesktop] = useState(window.innerWidth >= 1024);
+
+  // Update isDesktop based on screen width
+  useEffect(() => {
+    const handleResize = () => setIsDesktop(window.innerWidth >= 1024);
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
 
   const technologies = [
     {
@@ -42,10 +50,10 @@ const TechnologyPage = () => {
   const selectedTech = technologies.find((tech) => tech.id === selectedTechnology);
 
   return (
-    <div className="relative flex min-h-screen w-full text-white">
+    <div className="relative flex flex-col min-h-screen w-full text-white">
       {/* Backgrounds for different screen sizes */}
       <div
-        className="absolute inset-0 bg-cover bg-center"
+        className="absolute inset-0 bg-cover bg-center md:hidden"
         style={{
           backgroundImage: `url(${backgroundMobile})`
         }}
@@ -63,20 +71,27 @@ const TechnologyPage = () => {
         }}
       ></div>
 
-      {/* Header Text Slightly Higher */}
-      <div className="absolute top-16 left-8 text-gray-400 text-xl tracking-widest uppercase z-20">
-        03 Space Launch 101
+      {/* Header Text positioned just above the buttons */}
+      <div
+        className="absolute text-gray-400 text-lg md:text-xl tracking-widest uppercase z-20"
+        style={{
+          top: '20%', // Move it slightly higher
+          left: '10%', // Adjust horizontal position if needed
+          transform: 'translateY(-50%)' // Center alignment tweak
+        }}
+      >
+        03 <span className="text-white">Space Launch 101</span>
       </div>
 
       {/* Main Content */}
-      <div className="relative flex flex-col lg:flex-row items-center justify-between w-full pt-32 px-8 md:px-16 lg:px-32 space-y-6 lg:space-y-0 z-10">
-        {/* Sidebar with Numbers */}
-        <div className="flex flex-col items-center lg:items-start lg:space-y-10 space-x-8 lg:space-x-0 lg:mr-12">
+      <div className="relative flex flex-col lg:flex-row items-center justify-between w-full pt-24 md:pt-32 lg:pt-36 px-6 md:px-12 lg:px-32 space-y-6 lg:space-y-0 z-10">
+        {/* Sidebar with Buttons */}
+        <div className="flex flex-row lg:flex-col items-center space-x-4 lg:space-x-0 lg:space-y-10">
           {technologies.map((tech) => (
             <button
               key={tech.id}
               onClick={() => setSelectedTechnology(tech.id)}
-              className={`flex items-center justify-center w-16 h-16 lg:w-20 lg:h-20 rounded-full text-xl font-semibold ${
+              className={`w-12 h-12 md:w-16 md:h-16 lg:w-20 lg:h-20 rounded-full text-lg md:text-xl lg:text-2xl font-semibold transition-colors duration-200 ${
                 tech.id === selectedTechnology
                   ? 'bg-white text-black'
                   : 'border border-white text-white'
@@ -90,22 +105,20 @@ const TechnologyPage = () => {
         {/* Technology Information */}
         <div className="lg:flex-grow text-center lg:text-left max-w-lg space-y-4 lg:ml-8">
           <h3 className="text-gray-500 uppercase text-sm tracking-widest">The Terminology...</h3>
-          <h1 className="text-4xl md:text-5xl lg:text-6xl uppercase font-bold">
+          <h1 className="text-3xl md:text-4xl lg:text-5xl xl:text-6xl uppercase font-bold tracking-[0.15em]">
             {selectedTech?.title}
           </h1>
-          <p className="text-gray-400 text-sm md:text-base leading-relaxed">
+          <p className="text-gray-400 text-sm md:text-base lg:text-lg leading-relaxed">
             {selectedTech?.description}
           </p>
         </div>
 
         {/* Technology Image aligned to the right */}
-        <div className="w-full lg:w-1/2 flex justify-center lg:justify-end lg:pr-0">
+        <div className="w-full lg:w-1/2 flex justify-center lg:justify-end">
           <img
-            src={
-              window.innerWidth >= 1024 ? selectedTech?.portraitImage : selectedTech?.landscapeImage
-            }
+            src={isDesktop ? selectedTech?.portraitImage : selectedTech?.landscapeImage}
             alt={selectedTech?.title}
-            className="h-auto max-h-[500px] lg:max-h-[600px] xl:max-h-[700px] lg:max-w-full object-cover"
+            className="h-auto max-h-[300px] md:max-h-[400px] lg:max-h-[500px] xl:max-h-[600px] object-cover"
           />
         </div>
       </div>
