@@ -1,4 +1,5 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
+import { useMediaQuery } from 'react-responsive';
 import backgroundDesktop from '../assets/technology/background-technology-desktop.jpg';
 import backgroundTablet from '../assets/technology/background-technology-tablet.jpg';
 import backgroundMobile from '../assets/technology/background-technology-mobile.jpg';
@@ -11,14 +12,10 @@ import spaceportPortrait from '../assets/technology/image-spaceport-portrait.jpg
 
 const TechnologyPage = () => {
   const [selectedTechnology, setSelectedTechnology] = useState(1);
-  const [isDesktop, setIsDesktop] = useState(window.innerWidth >= 1024);
 
-  // Update isDesktop based on screen width
-  useEffect(() => {
-    const handleResize = () => setIsDesktop(window.innerWidth >= 1024);
-    window.addEventListener('resize', handleResize);
-    return () => window.removeEventListener('resize', handleResize);
-  }, []);
+  // Use media queries for responsive design
+  const isDesktop = useMediaQuery({ minWidth: 1024 });
+  const isTablet = useMediaQuery({ minWidth: 768, maxWidth: 1023 });
 
   const technologies = [
     {
@@ -53,21 +50,9 @@ const TechnologyPage = () => {
     <div className="relative flex flex-col min-h-screen w-full text-white">
       {/* Backgrounds for different screen sizes */}
       <div
-        className="absolute inset-0 bg-cover bg-center md:hidden"
+        className="absolute inset-0 bg-cover bg-center"
         style={{
-          backgroundImage: `url(${backgroundMobile})`
-        }}
-      ></div>
-      <div
-        className="absolute inset-0 bg-cover bg-center hidden md:block lg:hidden"
-        style={{
-          backgroundImage: `url(${backgroundTablet})`
-        }}
-      ></div>
-      <div
-        className="absolute inset-0 bg-cover bg-center hidden lg:block"
-        style={{
-          backgroundImage: `url(${backgroundDesktop})`
+          backgroundImage: `url(${isDesktop ? backgroundDesktop : isTablet ? backgroundTablet : backgroundMobile})`
         }}
       ></div>
 
@@ -75,16 +60,20 @@ const TechnologyPage = () => {
       <div
         className="absolute text-gray-400 text-lg md:text-xl tracking-widest uppercase z-20"
         style={{
-          top: '20%', // Move it slightly higher
-          left: '10%', // Adjust horizontal position if needed
-          transform: 'translateY(-50%)' // Center alignment tweak
+          top: '20%',
+          left: '10%',
+          transform: 'translateY(-50%)'
         }}
       >
         03 <span className="text-white">Space Launch 101</span>
       </div>
 
       {/* Main Content */}
-      <div className="relative flex flex-col lg:flex-row items-center justify-between w-full pt-24 md:pt-32 lg:pt-36 px-6 md:px-12 lg:px-32 space-y-6 lg:space-y-0 z-10">
+      <div
+        className={`relative flex flex-col lg:flex-row items-center justify-between w-full ${
+          isDesktop ? 'pt-36' : 'pt-64 md:pt-72'
+        } px-6 md:px-12 lg:px-32 space-y-6 lg:space-y-0 z-10`}
+      >
         {/* Sidebar with Buttons */}
         <div className="flex flex-row lg:flex-col items-center space-x-4 lg:space-x-0 lg:space-y-10">
           {technologies.map((tech) => (
