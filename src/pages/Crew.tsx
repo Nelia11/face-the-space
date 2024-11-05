@@ -89,7 +89,7 @@ const Crew: FC<CrewProps> = ({ crew }) => {
               </p>
 
               {/* Bio */}
-              <p className="text-sm md:text-base lg:text-[1.5rem] text-gray-100 opacity-70 font-heebo">
+              <p className="text-[18px] leading-[27px] text-gray-100 opacity-70 font-heebo">
                 {selectedCrewMember.bio}
               </p>
 
