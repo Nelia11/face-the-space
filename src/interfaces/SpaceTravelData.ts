@@ -1,7 +1,7 @@
 export interface SpaceTravelData {
   destinations: TravelDestination[];
   crew: CrewMember[];
-  technology: Technology[];
+  technologies: Tech[];
 }
 
 export interface TravelDestination {
@@ -17,13 +17,7 @@ export interface CrewMember {
   bio: string;
 }
 
-export interface Technology {
+export interface Tech {
   name: string;
-  images: TechnologyImages;
   description: string;
-}
-
-export interface TechnologyImages {
-  portrait: string;
-  landscape: string;
 }

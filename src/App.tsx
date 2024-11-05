@@ -29,8 +29,7 @@ const App = () => {
     return <div>Loading...</div>;
   }
 
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  const { destinations, crew, technology } = spaceTravelData;
+  const { destinations, crew, technologies } = spaceTravelData;
 
   return (
     <div className="flex justify-center h-screen w-full">
@@ -39,7 +38,7 @@ const App = () => {
         <Route path="/" element={<Home />} />
         <Route path="/destination" element={<Destination testdestinations={destinations} />} />
         <Route path="/crew" element={<Crew crew={crew} />} />
-        <Route path="/technology" element={<Technology />} />
+        <Route path="/technology" element={<Technology technologies={technologies} />} />
       </Routes>
     </div>
   );
