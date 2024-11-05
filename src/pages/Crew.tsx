@@ -43,7 +43,7 @@ const Crew: FC<CrewProps> = ({ crew }) => {
   };
 
   return (
-    <div className="relative min-h-screen w-screen bg-cover bg-center overflow-hidden">
+    <div className="relative min-h-screen w-screen bg-cover bg-center overflow-hidden font-sans">
       {/* Mobile Background */}
       <div
         className="absolute inset-0 bg-cover bg-no-repeat block phone:block tablet:hidden desktop:hidden"
@@ -72,33 +72,24 @@ const Crew: FC<CrewProps> = ({ crew }) => {
       <div className="relative flex items-center justify-center h-full w-full px-5 md:px-10 text-white z-10 pt-1 mt-1">
         <div className="flex flex-col lg:flex-row items-center justify-center lg:justify-between w-full max-w-6xl">
           <div className="flex flex-col items-center text-center md:text-center lg:text-left px-5 lg:px-10 lg:pl-10 mt-[5rem] lg:mt-[1rem]">
-            <div className="text-base sm:text-lg md:text-xl lg:text-2xl uppercase tracking-widest lg:w-full phone:mb-[3rem]">
-              <span className="text-gray-400">02 </span>
-              <span style={{ color: '#E5E5E5' }}>meet your crew</span>
+            <div className="text-base sm:text-lg md:text-xl lg:text-2xl uppercase tracking-widest lg:w-full phone:mb-[3rem] text-gray-400">
+              <span>02 </span>
+              <span className="text-gray-100">meet your crew</span>
             </div>
 
             {/* Role */}
             <div className="flex flex-col gap-[0.5rem] tablet:gap-[1rem] desktop:gap-[3rem]">
-              <p
-                className="text-sm md:text-base lg:text-[2rem] tracking-widest text-gray-300 opacity-50 uppercase mt-1 mb-1"
-                style={{ fontFamily: 'Bellefair, serif' }}
-              >
+              <p className="text-sm md:text-base lg:text-[2rem] tracking-widest text-gray-300 opacity-50 uppercase mt-1 mb-1 font-heebo">
                 {selectedCrewMember.role}
               </p>
 
               {/* Name */}
-              <p
-                className="text-sm md:text-base lg:text-[3.5rem] uppercase leading-relaxed"
-                style={{ fontFamily: 'Bellefair, serif' }}
-              >
+              <p className="text-sm md:text-base lg:text-[3.5rem] uppercase leading-relaxed font-heebo">
                 {selectedCrewMember.name}
               </p>
 
               {/* Bio */}
-              <p
-                className="text-sm md:text-base lg:text-[1.5rem] text-#D0D6F9"
-                style={{ color: '#D0D6F9' }}
-              >
+              <p className="text-[18px] leading-[27px] text-gray-100 opacity-70 font-heebo">
                 {selectedCrewMember.bio}
               </p>
 
@@ -133,3 +124,4 @@ const Crew: FC<CrewProps> = ({ crew }) => {
 };
 
 export default Crew;
+
