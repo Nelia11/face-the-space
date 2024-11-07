@@ -119,4 +119,3 @@ const Technology: FC<TechnologyProps> = ({ technologies }) => {
 };
 
 export default Technology;
-
