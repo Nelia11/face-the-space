@@ -1,4 +1,4 @@
-import { Route, Routes } from 'react-router-dom';
+import { Route, Routes, useLocation } from 'react-router-dom';
 import NavBar from './components/navBar/NavBar';
 import Home from './pages/Home';
 import Destination from './pages/Destination';
@@ -21,6 +21,7 @@ import backgroundMobileTechnology from './assets/technology/background-technolog
 
 const App = () => {
   const [spaceTravelData, setSpaceTravelData] = useState<SpaceTravelData | null>(null);
+  const location = useLocation();
 
   const fetchData = async () => {
     try {
@@ -33,30 +34,35 @@ const App = () => {
     }
   };
 
-  const desktopImages = useMemo(() => {
-    return [
+  const desktopImages = useMemo(
+    () => [
       backgroundDesktopHome,
       backgroundDesktopDestination,
       backgroundDesktopCrew,
       backgroundDesktopTechnology
-    ];
-  }, []);
-  const tabletImages = useMemo(() => {
-    return [
+    ],
+    []
+  );
+
+  const tabletImages = useMemo(
+    () => [
       backgroundTabletHome,
       backgroundTabletDestination,
       backgroundTabletCrew,
       backgroundTabletTechnology
-    ];
-  }, []);
-  const mobileImages = useMemo(() => {
-    return [
+    ],
+    []
+  );
+
+  const mobileImages = useMemo(
+    () => [
       backgroundMobileHome,
       backgroundMobileDestination,
       backgroundMobileCrew,
       backgroundMobileTechnology
-    ];
-  }, []);
+    ],
+    []
+  );
 
   const preloadImagesForScreenSize = useCallback(() => {
     const preloadImages = (srcArray: Array<string>) => {
@@ -77,7 +83,7 @@ const App = () => {
 
   useEffect(() => {
     preloadImagesForScreenSize();
-  }, [preloadImagesForScreenSize]);
+  }, [preloadImagesForScreenSize, location.pathname]);
 
   useEffect(() => {
     fetchData();
