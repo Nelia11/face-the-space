@@ -6,6 +6,15 @@ import Crew from './pages/Crew';
 import Technology from './pages/Technology';
 import { useCallback, useEffect, useMemo, useState } from 'react';
 import { SpaceTravelData } from './interfaces/SpaceTravelData';
+import backgroundDesktopHome from './assets/home/background-home-desktop.jpg';
+import backgroundTabletHome from './assets/home/background-home-tablet.jpg';
+import backgroundMobileHome from './assets/home/background-home-mobile.jpg';
+import backgroundDesktopDestination from './assets/destination/background-destination-desktop.jpg';
+import backgroundTabletDestination from './assets/destination/background-destination-tablet.jpg';
+import backgroundMobileDestination from './assets/destination/background-destination-mobile.jpg';
+import backgroundDesktopCrew from './assets/crew/background-crew-desktop.jpg';
+import backgroundTabletCrew from './assets/crew/background-crew-tablet.jpg';
+import backgroundMobileCrew from './assets/crew/background-crew-mobile.jpg';
 import backgroundDesktopTechnology from './assets/technology/background-technology-desktop.jpg';
 import backgroundTabletTechnology from './assets/technology/background-technology-tablet.jpg';
 import backgroundMobileTechnology from './assets/technology/background-technology-mobile.jpg';
@@ -13,14 +22,40 @@ import backgroundMobileTechnology from './assets/technology/background-technolog
 const App = () => {
   const [spaceTravelData, setSpaceTravelData] = useState<SpaceTravelData | null>(null);
 
+  const fetchData = async () => {
+    try {
+      const data = await fetch('/api/data.json');
+      if (!data) throw new Error();
+      const res: SpaceTravelData = await data.json();
+      setSpaceTravelData(res);
+    } catch (error) {
+      console.error('Failed to fetch: ', error);
+    }
+  };
+
   const desktopImages = useMemo(() => {
-    return [backgroundDesktopTechnology];
+    return [
+      backgroundDesktopHome,
+      backgroundDesktopDestination,
+      backgroundDesktopCrew,
+      backgroundDesktopTechnology
+    ];
   }, []);
   const tabletImages = useMemo(() => {
-    return [backgroundTabletTechnology];
+    return [
+      backgroundTabletHome,
+      backgroundTabletDestination,
+      backgroundTabletCrew,
+      backgroundTabletTechnology
+    ];
   }, []);
   const mobileImages = useMemo(() => {
-    return [backgroundMobileTechnology];
+    return [
+      backgroundMobileHome,
+      backgroundMobileDestination,
+      backgroundMobileCrew,
+      backgroundMobileTechnology
+    ];
   }, []);
 
   const preloadImagesForScreenSize = useCallback(() => {
@@ -43,17 +78,6 @@ const App = () => {
   useEffect(() => {
     preloadImagesForScreenSize();
   }, [preloadImagesForScreenSize]);
-
-  const fetchData = async () => {
-    try {
-      const data = await fetch('/api/data.json');
-      if (!data) throw new Error();
-      const res: SpaceTravelData = await data.json();
-      setSpaceTravelData(res);
-    } catch (error) {
-      console.error('Failed to fetch: ', error);
-    }
-  };
 
   useEffect(() => {
     fetchData();
