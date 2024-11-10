@@ -4,7 +4,7 @@ import backgroundMobile from '../assets/background-home-mobile.jpg';
 
 const Home = () => {
   const handleExploreClick = () => {
-    window.location.href = 'https://www.nasa.gov'; // Redirect to NASA's website
+    window.location.href = 'https://www.nasa.gov';
   };
 
   return (
