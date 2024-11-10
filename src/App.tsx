@@ -4,11 +4,45 @@ import Home from './pages/Home';
 import Destination from './pages/Destination';
 import Crew from './pages/Crew';
 import Technology from './pages/Technology';
-import { useEffect, useState } from 'react';
+import { useCallback, useEffect, useMemo, useState } from 'react';
 import { SpaceTravelData } from './interfaces/SpaceTravelData';
+import backgroundDesktopTechnology from './assets/technology/background-technology-desktop.jpg';
+import backgroundTabletTechnology from './assets/technology/background-technology-tablet.jpg';
+import backgroundMobileTechnology from './assets/technology/background-technology-mobile.jpg';
 
 const App = () => {
   const [spaceTravelData, setSpaceTravelData] = useState<SpaceTravelData | null>(null);
+
+  const desktopImages = useMemo(() => {
+    return [backgroundDesktopTechnology];
+  }, []);
+  const tabletImages = useMemo(() => {
+    return [backgroundTabletTechnology];
+  }, []);
+  const mobileImages = useMemo(() => {
+    return [backgroundMobileTechnology];
+  }, []);
+
+  const preloadImagesForScreenSize = useCallback(() => {
+    const preloadImages = (srcArray: Array<string>) => {
+      srcArray.forEach((src) => {
+        const img = new Image();
+        img.src = src;
+      });
+    };
+
+    if (window.innerWidth >= 1024) {
+      preloadImages(desktopImages);
+    } else if (window.innerWidth >= 768) {
+      preloadImages(tabletImages);
+    } else {
+      preloadImages(mobileImages);
+    }
+  }, [desktopImages, tabletImages, mobileImages]);
+
+  useEffect(() => {
+    preloadImagesForScreenSize();
+  }, [preloadImagesForScreenSize]);
 
   const fetchData = async () => {
     try {
