@@ -26,13 +26,13 @@ const App = () => {
   }, []);
 
   if (!spaceTravelData) {
-    return <div>Loading...</div>;
+    return null;
   }
 
   const { destinations, crew, technologies } = spaceTravelData;
 
   return (
-    <div className="flex justify-center h-screen w-full">
+    <div className="flex justify-center h-screen w-full bg-black">
       <NavBar />
       <Routes>
         <Route path="/" element={<Home />} />
