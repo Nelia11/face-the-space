@@ -9,11 +9,11 @@ import titanImage from '../assets/destination/image-titan.png';
 import { TravelDestination } from '../interfaces/SpaceTravelData';
 
 interface DestinationProps {
-  testdestinations: TravelDestination[];
+  destinations: TravelDestination[];
 }
 
-const Destination: FC<DestinationProps> = ({ testdestinations }) => {
-  const mappedDestination = testdestinations.map((destination) => {
+const Destination: FC<DestinationProps> = ({ destinations }) => {
+  const mappedDestination = destinations.map((destination) => {
     switch (destination.name) {
       case 'Moon':
         return { ...destination, image: moonImage };

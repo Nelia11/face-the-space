@@ -1,10 +1,10 @@
-import backgroundDesktop from '../assets/background-home-desktop.jpg';
-import backgroundTablet from '../assets/background-home-tablet.jpg';
-import backgroundMobile from '../assets/background-home-mobile.jpg';
+import backgroundDesktop from '../assets/home/background-home-desktop.jpg';
+import backgroundTablet from '../assets/home/background-home-tablet.jpg';
+import backgroundMobile from '../assets/home/background-home-mobile.jpg';
 
 const Home = () => {
   const handleExploreClick = () => {
-    window.location.href = 'https://www.nasa.gov'; // Redirect to NASA's website
+    window.location.href = 'https://www.nasa.gov';
   };
 
   return (

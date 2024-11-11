@@ -16,6 +16,10 @@ const NavBar = () => {
     setIsMobMenuOpen(!isMobMenuOpen);
   };
 
+  const closeMobMenu = () => {
+    setIsMobMenuOpen(false);
+  };
+
   useEffect(() => {
     switch (location.pathname) {
       case '/':
@@ -49,45 +53,48 @@ const NavBar = () => {
       </div>
 
       {isMobMenuOpen && (
-        <div className="phone:hidden flex-col h-[8.8rem] w-[15.875rem] absolute right-0 h-screen backdrop-blur-lg bg-gray-900 bg-opacity-10 z-20">
-          <div className="flex h-[8.8rem] items-center justify-end w-full">
-            <img src={iconClose} onClick={toggleMenu} alt="icon-close" className="mr-[2rem]" />
+        <>
+          <div className="absolute w-[100%] h-[100%] z-20" onClick={closeMobMenu}></div>
+          <div className="phone:hidden flex-col h-[8.8rem] w-[15.875rem] absolute right-0 h-screen backdrop-blur-lg bg-gray-900 bg-opacity-10 z-30">
+            <div className="flex h-[8.8rem] items-center justify-end w-full">
+              <img src={iconClose} onClick={toggleMenu} alt="icon-close" className="mr-[2rem]" />
+            </div>
+            <div>
+              <Link to="/">
+                <MenuItemMob
+                  index="00"
+                  text="home"
+                  activeIndex={activeIndex}
+                  setActiveIndex={setActiveIndex}
+                />
+              </Link>
+              <Link to="/destination">
+                <MenuItemMob
+                  index="01"
+                  text="destination"
+                  activeIndex={activeIndex}
+                  setActiveIndex={setActiveIndex}
+                />
+              </Link>
+              <Link to="/crew">
+                <MenuItemMob
+                  index="02"
+                  text="crew"
+                  activeIndex={activeIndex}
+                  setActiveIndex={setActiveIndex}
+                />
+              </Link>
+              <Link to="/technology">
+                <MenuItemMob
+                  index="03"
+                  text="technology"
+                  activeIndex={activeIndex}
+                  setActiveIndex={setActiveIndex}
+                />
+              </Link>
+            </div>
           </div>
-          <div>
-            <Link to="/">
-              <MenuItemMob
-                index="00"
-                text="home"
-                activeIndex={activeIndex}
-                setActiveIndex={setActiveIndex}
-              />
-            </Link>
-            <Link to="/destination">
-              <MenuItemMob
-                index="01"
-                text="destination"
-                activeIndex={activeIndex}
-                setActiveIndex={setActiveIndex}
-              />
-            </Link>
-            <Link to="/crew">
-              <MenuItemMob
-                index="02"
-                text="crew"
-                activeIndex={activeIndex}
-                setActiveIndex={setActiveIndex}
-              />
-            </Link>
-            <Link to="/technology">
-              <MenuItemMob
-                index="03"
-                text="technology"
-                activeIndex={activeIndex}
-                setActiveIndex={setActiveIndex}
-              />
-            </Link>
-          </div>
-        </div>
+        </>
       )}
 
       {/* tablet and desktop */}
