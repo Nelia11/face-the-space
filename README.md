@@ -11,9 +11,6 @@
 - [Technologies Used](#technologies-used)
 - [Project Setup](#project-setup)
 - [Features](#features)
-- [Folder Structure](#folder-structure)
-- [Contributing](#contributing)
-- [License](#license)
 
 ## Technologies Used
 
