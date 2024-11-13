@@ -10,7 +10,9 @@
 
 - [Technologies Used](#technologies-used)
 - [Project Setup](#project-setup)
+- [Deployment](#deployment)
 - [Features](#features)
+- [Visual Previews](#visual-previews)
 
 ## Technologies Used
 
@@ -43,3 +45,70 @@ The project has been deployed and is accessible at the following link:
 - **Styled with Tailwind CSS**: Custom and modern design using utility-first CSS classes.
 - **Navigation**: Includes sections like Home, Destination, Crew, and Technology for a complete user experience.
 
+## Visual Previews
+
+### 1. Home Page
+
+<table>
+  <tr>
+    <td><strong>Desktop View</strong></td>
+    <td><strong>Responsive View</strong></td>
+  </tr>
+  <tr>
+    <td><img src="https://github.com/user-attachments/assets/08412909-950f-42e4-b103-37aff352e1dd" alt="Home Page - Desktop View" width="400"></td>
+    <td><img src="https://github.com/user-attachments/assets/fc3f64f2-4d09-40be-85b1-78e2126e4ee3" alt="Home Page - Responsive View" width="200"></td>
+  </tr>
+</table>
+
+- The homepage features an inviting message encouraging users to explore space, with smooth navigation and a large "Explore" button.
+
+---
+
+### 2. Crew Page
+
+<table>
+  <tr>
+    <td><strong>Desktop View</strong></td>
+    <td><strong>Responsive View</strong></td>
+  </tr>
+  <tr>
+    <td><img src="https://github.com/user-attachments/assets/1a31ea93-d081-482a-a8c8-70888008fc79" alt="Crew Page - Desktop View" width="400"></td>
+    <td><img src="https://github.com/user-attachments/assets/268c22ef-eb99-45b9-9eb9-4a8cab43cde9" alt="Crew Page - Responsive View" width="200"></td>
+  </tr>
+</table>
+
+- The crew page introduces users to the team members who make space travel possible, with a detailed and interactive layout.
+
+---
+
+### 3. Destination Page
+
+<table>
+  <tr>
+    <td><strong>Desktop View</strong></td>
+    <td><strong>Responsive View</strong></td>
+  </tr>
+  <tr>
+    <td><img src="https://github.com/user-attachments/assets/905b8627-606d-4039-a2d6-c354e12bb69c" alt="Destination Page - Desktop View" width="400"></td>
+    <td><img src="https://github.com/user-attachments/assets/ffdef402-c610-4a55-865e-f256363ba06e" alt="Destination Page - Responsive View" width="200"></td>
+  </tr>
+</table>
+
+- Users can choose their destination, like the Moon, and see relevant details such as average distance and estimated travel time.
+
+---
+
+### 4. Technology Page
+
+<table>
+  <tr>
+    <td><strong>Desktop View</strong></td>
+    <td><strong>Responsive View</strong></td>
+  </tr>
+  <tr>
+    <td><img src="https://github.com/user-attachments/assets/2dc3ae07-97d5-4f0f-b7c2-9ff8bb746c02" alt="Technology Page - Desktop View" width="400"></td>
+    <td><img src="https://github.com/user-attachments/assets/c153f131-b2e1-4d1a-a0d5-c5918ef49504" alt="Technology Page - Responsive View" width="200"></td>
+  </tr>
+</table>
+
+- The technology page provides an overview of the advanced technologies used for space travel, presented in a visually engaging manner.
