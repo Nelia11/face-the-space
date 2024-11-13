@@ -67,9 +67,9 @@ const Crew: FC<CrewProps> = ({ crew }) => {
       ></div>
 
       {/* Main Content */}
-      <div className="relative flex flex-col items-center justify-center lg:flex-row h-full w-full px-5 md:px-10 text-white z-10 pt-10 pb-10">
+      <div className="relative flex flex-col items-center justify-center lg:flex-row h-full w-full px-5 md:px-10 text-white z-10 pt-24 pb-10">
         {/* Text Content */}
-        <div className="flex flex-col items-center lg:items-start text-center lg:text-left space-y-4 lg:space-y-6 max-w-lg lg:max-w-md px-4 lg:px-0 mt-10 md:mt-0">
+        <div className="flex flex-col items-center lg:items-start text-center lg:text-left space-y-4 lg:space-y-6 max-w-lg lg:max-w-md px-4 lg:px-0 mt-24 md:mt-0">
           <div className="text-gray-400 uppercase tracking-widest text-sm md:text-lg lg:text-xl">
             <span className="mr-2">02</span> <span className="text-white">Meet your crew</span>
           </div>
