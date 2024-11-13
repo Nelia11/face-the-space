@@ -17,7 +17,11 @@ export interface CrewMember {
   bio: string;
 }
 
+// Assuming this is your Tech interface
 export interface Tech {
   name: string;
   description: string;
+  landscapeImage?: string;
+  portraitImage?: string;
 }
+

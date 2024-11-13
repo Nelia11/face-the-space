@@ -44,79 +44,74 @@ const Crew: FC<CrewProps> = ({ crew }) => {
 
   return (
     <div className="relative min-h-screen w-screen bg-cover bg-center overflow-hidden font-sans">
-      {/* Mobile Background */}
+      {/* Background Images */}
       <div
-        className="absolute inset-0 bg-cover bg-no-repeat block phone:block tablet:hidden desktop:hidden"
+        className="absolute inset-0 bg-cover bg-no-repeat"
         style={{
           backgroundImage: `url(${bgMobile})`
         }}
       ></div>
 
-      {/* Tablet Background */}
       <div
-        className="absolute inset-0 bg-cover bg-no-repeat hidden tablet:block desktop:hidden"
+        className="absolute inset-0 bg-cover bg-no-repeat hidden md:block"
         style={{
           backgroundImage: `url(${bgTablet})`
         }}
       ></div>
 
-      {/* Desktop Background */}
       <div
-        className="absolute inset-0 bg-cover bg-no-repeat hidden desktop:block"
+        className="absolute inset-0 bg-cover bg-no-repeat hidden lg:block"
         style={{
           backgroundImage: `url(${bgDesktop})`
         }}
       ></div>
 
       {/* Main Content */}
-      <div className="relative flex items-center justify-center h-full w-full px-5 md:px-10 text-white z-10 pt-1 mt-1">
-        <div className="flex flex-col lg:flex-row items-center justify-center lg:justify-between w-full max-w-6xl">
-          <div className="flex flex-col items-center text-center md:text-center lg:text-left px-5 lg:px-10 lg:pl-10 mt-[5rem] lg:mt-[1rem]">
-            <div className="text-base sm:text-lg md:text-xl lg:text-2xl uppercase tracking-widest lg:w-full phone:mb-[3rem] text-gray-400">
-              <span>02 </span>
-              <span className="text-gray-100">meet your crew</span>
-            </div>
-
-            {/* Role */}
-            <div className="flex flex-col gap-[0.5rem] tablet:gap-[1rem] desktop:gap-[3rem]">
-              <p className="text-sm md:text-base lg:text-[2rem] tracking-widest text-gray-300 opacity-50 uppercase mt-1 mb-1 font-heebo">
-                {selectedCrewMember.role}
-              </p>
-
-              {/* Name */}
-              <p className="text-sm md:text-base lg:text-[3.5rem] uppercase leading-relaxed font-heebo">
-                {selectedCrewMember.name}
-              </p>
-
-              {/* Bio */}
-              <p className="text-[18px] leading-[27px] text-gray-100 opacity-70 font-heebo">
-                {selectedCrewMember.bio}
-              </p>
-
-              {/* Dots for crew member selection */}
-              <div className="flex mb-5 items-center justify-center lg:justify-start w-full">
-                {mappedCrew.map((_, index) => (
-                  <div
-                    key={index}
-                    onClick={() => handleCircleClick(index)}
-                    className={`flex w-3 h-3 rounded-full bg-white ${
-                      selectedIndex === index ? 'w-5 h-5 opacity-100' : 'opacity-50'
-                    } mr-7 cursor-pointer transition-all duration-300`}
-                  ></div>
-                ))}
-              </div>
-            </div>
+      <div className="relative flex flex-col items-center justify-center lg:flex-row h-full w-full px-5 md:px-10 text-white z-10 pt-10 pb-10">
+        {/* Text Content */}
+        <div className="flex flex-col items-center lg:items-start text-center lg:text-left space-y-4 lg:space-y-6 max-w-lg lg:max-w-md px-4 lg:px-0 mt-10 md:mt-0">
+          <div className="text-gray-400 uppercase tracking-widest text-sm md:text-lg lg:text-xl">
+            <span className="mr-2">02</span> <span className="text-white">Meet your crew</span>
           </div>
 
-          {/* Image */}
-          <div className="flex items-center justify-center lg:ml-20">
-            <div className="text-black flex items-center justify-center cursor-pointer">
-              <img
-                src={selectedCrewMember.image.png}
-                className="w-[10rem] tablet:w-[10rem] lg:w-[25rem] desktop:w-[40rem]"
-              />
-            </div>
+          {/* Role */}
+          <p className="text-gray-300 opacity-70 uppercase tracking-wide text-sm md:text-lg lg:text-2xl min-h-[3rem]">
+            {selectedCrewMember.role}
+          </p>
+
+          {/* Name */}
+          <h1 className="text-white uppercase font-bold text-2xl md:text-4xl lg:text-5xl min-h-[4rem]">
+            {selectedCrewMember.name}
+          </h1>
+
+          {/* Bio */}
+          <p className="text-gray-200 text-base md:text-lg lg:text-xl leading-relaxed min-h-[10rem] lg:min-h-[12rem]">
+            {selectedCrewMember.bio}
+          </p>
+
+          {/* Selection Dots */}
+          <div className="flex space-x-4 mt-5">
+            {mappedCrew.map((_, index) => (
+              <button
+                key={index}
+                onClick={() => handleCircleClick(index)}
+                className={`w-3 h-3 md:w-4 md:h-4 rounded-full transition-transform ${
+                  selectedIndex === index
+                    ? 'bg-white scale-125 opacity-100'
+                    : 'bg-gray-500 opacity-50'
+                }`}
+              ></button>
+            ))}
           </div>
+        </div>
+
+        {/* Image */}
+        <div className="mt-10 lg:mt-0 lg:ml-20 flex justify-center">
+          <img
+            src={selectedCrewMember.image.png}
+            alt={selectedCrewMember.name}
+            className="w-60 h-60 md:w-72 md:h-72 lg:w-96 lg:h-96 object-contain transition-transform duration-300"
+          />
         </div>
       </div>
     </div>
@@ -124,3 +119,4 @@ const Crew: FC<CrewProps> = ({ crew }) => {
 };
 
 export default Crew;
+
