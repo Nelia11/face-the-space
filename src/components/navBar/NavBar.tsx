@@ -41,7 +41,7 @@ const NavBar = () => {
 
   return (
     <>
-      {/* phone */}
+      {/* Mobile Navbar */}
       <div className="flex phone:hidden items-center justify-between h-[8.8rem] w-full absolute pl-5 pr-5 z-20">
         <img src={logo} alt="logo" className="h-[4rem]" />
         <img
@@ -54,13 +54,21 @@ const NavBar = () => {
 
       {isMobMenuOpen && (
         <>
-          <div className="absolute w-[100%] h-[100%] z-20" onClick={closeMobMenu}></div>
+          {/* Clickable Overlay to Close Menu */}
+          <div className="fixed inset-0 z-20 bg-transparent" onClick={closeMobMenu}></div>
+
+          {/* Mobile Menu */}
           <div className="phone:hidden flex-col h-[8.8rem] w-[15.875rem] absolute right-0 h-screen backdrop-blur-lg bg-gray-900 bg-opacity-10 z-30">
             <div className="flex h-[8.8rem] items-center justify-end w-full">
-              <img src={iconClose} onClick={toggleMenu} alt="icon-close" className="mr-[2rem]" />
+              <img
+                src={iconClose}
+                onClick={toggleMenu}
+                alt="icon-close"
+                className="mr-[2rem] cursor-pointer"
+              />
             </div>
             <div>
-              <Link to="/">
+              <Link to="/" onClick={closeMobMenu}>
                 <MenuItemMob
                   index="00"
                   text="home"
@@ -68,7 +76,7 @@ const NavBar = () => {
                   setActiveIndex={setActiveIndex}
                 />
               </Link>
-              <Link to="/destination">
+              <Link to="/destination" onClick={closeMobMenu}>
                 <MenuItemMob
                   index="01"
                   text="destination"
@@ -76,7 +84,7 @@ const NavBar = () => {
                   setActiveIndex={setActiveIndex}
                 />
               </Link>
-              <Link to="/crew">
+              <Link to="/crew" onClick={closeMobMenu}>
                 <MenuItemMob
                   index="02"
                   text="crew"
@@ -84,7 +92,7 @@ const NavBar = () => {
                   setActiveIndex={setActiveIndex}
                 />
               </Link>
-              <Link to="/technology">
+              <Link to="/technology" onClick={closeMobMenu}>
                 <MenuItemMob
                   index="03"
                   text="technology"
@@ -97,7 +105,7 @@ const NavBar = () => {
         </>
       )}
 
-      {/* tablet and desktop */}
+      {/* Tablet and Desktop Navbar */}
       <div className="hidden phone:flex items-center justify-center absolute w-full max-w-[1440px] mt-[0.625rem] z-20">
         <div className="flex items-center justify-between w-full">
           <div className="hidden sm501:flex items-center justify-center w-[6.25rem] z-10">
@@ -155,3 +163,4 @@ const NavBar = () => {
 };
 
 export default NavBar;
+
