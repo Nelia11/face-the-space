@@ -21,7 +21,7 @@ const Home = () => {
           truly out-of-this-world experience!
         </p>
       </div>
-      <div className="flex items-center justify-center mt-10 md:mt-20 lg:mt-16 lg:ml-20">
+      <div className="flex items-center justify-center mt-10 md:mt-20 lg:mt-16 lg:ml-20 lg:mr-10">
         <div
           onClick={handleExploreClick}
           className="bg-white text-black w-32 h-32 md:w-40 md:h-40 lg:w-60 lg:h-60 rounded-full flex items-center justify-center cursor-pointer shadow-lg transition-transform transform hover:scale-105"

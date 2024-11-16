@@ -54,7 +54,7 @@ const Technology: FC<TechnologyProps> = ({ technologies }) => {
         {/* Main Content */}
         <div className="relative flex flex-col lg:flex-row items-center justify-between w-full h-full px-6 space-y-6 lg:space-y-0 gap-1">
           {/* Sidebar with Buttons */}
-          <div className="flex flex-row lg:flex-col items-center space-x-4 lg:space-x-0 lg:space-y-10">
+          <div className="flex flex-row lg:flex-col items-center space-x-4 lg:space-x-0 lg:space-y-10 my-5">
             {mappedTechnologies.map((_, index) => (
               <button
                 key={index}
