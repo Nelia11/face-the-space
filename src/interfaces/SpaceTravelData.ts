@@ -24,4 +24,3 @@ export interface Tech {
   landscapeImage?: string;
   portraitImage?: string;
 }
-

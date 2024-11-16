@@ -119,4 +119,3 @@ const Crew: FC<CrewProps> = ({ crew }) => {
 };
 
 export default Crew;
-
