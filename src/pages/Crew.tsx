@@ -8,6 +8,7 @@ import douglas from '../assets/crew/image-douglas-hurley.png';
 import mark from '../assets/crew/image-mark-shuttleworth.png';
 import victor from '../assets/crew/image-victor-glover.png';
 import Layout from '../components/layout/Layout';
+import Section from '../components/section/Section';
 
 interface CrewProps {
   crew: CrewMember[];
@@ -45,42 +46,39 @@ const Crew: FC<CrewProps> = ({ crew }) => {
 
   return (
     <Layout bgMob={bgMobile} bgTablet={bgTablet} bgDesktop={bgDesktop}>
-      {/* Text Content */}
-      <div className="flex flex-col items-center lg:items-start text-center lg:text-left space-y-4 lg:space-y-6 max-w-lg lg:max-w-md px-4 lg:px-0 mt-24 md:mt-0">
-        <div className="text-gray-400 uppercase tracking-widest text-sm md:text-lg lg:text-xl">
-          <span className="mr-2">02</span> <span className="text-white">Meet your crew</span>
-        </div>
-
+      <Section pageNumber="02" title="meet your crew">
         {/* Role */}
-        <p className="text-gray-300 opacity-70 uppercase tracking-wide text-sm md:text-lg lg:text-2xl min-h-[3rem]">
-          {selectedCrewMember.role}
-        </p>
+        <div className="flex flex-col gap-[0.5rem] tablet:gap-[1rem] desktop:gap-[3rem]">
+          <p className="text-sm md:text-base lg:text-[2rem] tracking-widest text-gray-300 opacity-50 uppercase mt-1 mb-1 font-heebo">
+            {selectedCrewMember.role}
+          </p>
 
-        {/* Name */}
-        <h1 className="text-white uppercase font-bold text-2xl md:text-4xl lg:text-5xl min-h-[4rem]">
-          {selectedCrewMember.name}
-        </h1>
+          {/* Name */}
+          <p className="text-sm md:text-base lg:text-[3.5rem] uppercase leading-relaxed font-heebo">
+            {selectedCrewMember.name}
+          </p>
 
-        {/* Bio */}
-        <p className="text-gray-200 text-base md:text-lg lg:text-xl leading-relaxed min-h-[10rem] lg:min-h-[12rem]">
-          {selectedCrewMember.bio}
-        </p>
+          {/* Bio */}
+          <p className="text-[18px] leading-[27px] text-gray-100 opacity-70 font-heebo">
+            {selectedCrewMember.bio}
+          </p>
 
-        {/* Selection Dots */}
-        <div className="flex space-x-4 mt-5">
-          {mappedCrew.map((_, index) => (
-            <button
-              key={index}
-              onClick={() => handleCircleClick(index)}
-              className={`w-3 h-3 md:w-4 md:h-4 rounded-full transition-transform ${
-                selectedIndex === index
-                  ? 'bg-white scale-125 opacity-100'
-                  : 'bg-gray-500 opacity-50'
-              }`}
-            />
-          ))}
+          {/* Dots for crew member selection */}
+          <div className="flex space-x-4 mt-5 mb-5 justify-center lg:justify-start">
+            {mappedCrew.map((_, index) => (
+              <button
+                key={index}
+                onClick={() => handleCircleClick(index)}
+                className={`w-3 h-3 md:w-4 md:h-4 rounded-full transition-transform ${
+                  selectedIndex === index
+                    ? 'bg-white scale-125 opacity-100'
+                    : 'bg-gray-500 opacity-50'
+                }`}
+              />
+            ))}
+          </div>
         </div>
-      </div>
+      </Section>
 
       {/* Image */}
       <div className="mt-10 lg:mt-0 lg:ml-20 flex justify-center">

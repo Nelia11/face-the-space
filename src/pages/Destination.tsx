@@ -8,6 +8,7 @@ import europaImage from '../assets/destination/image-europa.png';
 import titanImage from '../assets/destination/image-titan.png';
 import { TravelDestination } from '../interfaces/SpaceTravelData';
 import Layout from '../components/layout/Layout';
+import Section from '../components/section/Section';
 
 interface DestinationProps {
   destinations: TravelDestination[];
@@ -39,15 +40,7 @@ const Destination: FC<DestinationProps> = ({ destinations }) => {
 
   return (
     <Layout bgMob={backgroundMobile} bgTablet={backgroundTablet} bgDesktop={backgroundDesktop}>
-      <div>
-        {/* Section Title */}
-        <div className="w-full flex flex-col items-center lg:items-start mb-3 md:mb-5 lg:ml-28 text-center lg:text-left mt-12 md:mt-16 lg:mt-0">
-          <h2 className="text-base sm:text-lg md:text-xl lg:text-2xl uppercase tracking-widest">
-            <span className="text-gray-400">01</span>{' '}
-            <span style={{ color: '#E5E5E5' }}>Pick Your Destination</span>
-          </h2>
-        </div>
-
+      <Section pageNumber="01" title="pick your destination">
         {/* Main Content Area */}
         <div className="flex flex-col lg:flex-row items-center lg:items-start justify-center lg:justify-between w-full space-y-5 md:space-y-10 lg:space-y-0 lg:space-x-20">
           {/* Left Column - Centered Image */}
@@ -107,7 +100,7 @@ const Destination: FC<DestinationProps> = ({ destinations }) => {
             </div>
           </div>
         </div>
-      </div>
+      </Section>
     </Layout>
   );
 };
