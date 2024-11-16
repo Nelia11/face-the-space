@@ -96,7 +96,7 @@ const App = () => {
   const { destinations, crew, technologies } = spaceTravelData;
 
   return (
-    <div className="flex justify-center h-screen w-full bg-black">
+    <div className="flex justify-center bg-black">
       <NavBar />
       <Routes>
         <Route path="/" element={<Home />} />
