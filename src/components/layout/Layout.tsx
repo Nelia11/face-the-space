@@ -27,7 +27,7 @@ const Layout: FC<LayoutProps> = ({ children, bgMob, bgTablet, bgDesktop }) => {
   }, [bgMob, bgTablet, bgDesktop]);
 
   return (
-    <div className="relative h-screen w-screen bg-cover bg-center">
+    <div className="relative min-h-screen w-screen bg-cover bg-center overflow-y-auto">
       {/* Conditionally render images after they are loaded */}
       {isLoading && (
         <>
