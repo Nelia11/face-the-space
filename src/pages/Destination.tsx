@@ -1,4 +1,4 @@
-import { useState, useEffect, FC } from 'react';
+import { useState, FC } from 'react';
 import backgroundDesktop from '../assets/destination/background-destination-desktop.jpg';
 import backgroundTablet from '../assets/destination/background-destination-tablet.jpg';
 import backgroundMobile from '../assets/destination/background-destination-mobile.jpg';
@@ -7,6 +7,7 @@ import moonImage from '../assets/destination/image-moon.png';
 import europaImage from '../assets/destination/image-europa.png';
 import titanImage from '../assets/destination/image-titan.png';
 import { TravelDestination } from '../interfaces/SpaceTravelData';
+import Layout from '../components/layout/Layout';
 
 interface DestinationProps {
   destinations: TravelDestination[];
@@ -36,51 +37,9 @@ const Destination: FC<DestinationProps> = ({ destinations }) => {
     setSelectedDestination(mappedDestination[index]);
   };
 
-  useEffect(() => {
-    const setVh = () => {
-      document.documentElement.style.setProperty('--vh', `${window.innerHeight * 0.01}px`);
-    };
-
-    setVh(); // Set on load
-    window.addEventListener('resize', setVh); // Update on resize
-    return () => window.removeEventListener('resize', setVh); // Clean up
-  }, []);
-
   return (
-    <div
-      className="relative w-screen overflow-hidden text-white"
-      style={{ height: 'calc(var(--vh, 1vh) * 100)' }}
-    >
-      {/* Background layers with fixed position */}
-      <div
-        className="fixed inset-0 bg-cover bg-center z-0"
-        style={{
-          backgroundImage: `url(${backgroundMobile})`,
-          backgroundSize: 'cover',
-          height: '100vh'
-        }}
-      ></div>
-
-      <div
-        className="fixed inset-0 bg-cover bg-center z-0 hidden md:block lg:hidden"
-        style={{
-          backgroundImage: `url(${backgroundTablet})`,
-          backgroundSize: 'cover',
-          height: '100vh'
-        }}
-      ></div>
-
-      <div
-        className="fixed inset-0 bg-cover bg-center z-0 hidden lg:block"
-        style={{
-          backgroundImage: `url(${backgroundDesktop})`,
-          backgroundSize: 'cover',
-          height: '100vh'
-        }}
-      ></div>
-
-      {/* Main Content */}
-      <div className="relative flex flex-col items-center justify-center h-full w-full px-5 md:px-10 lg:px-32 z-10 mt-1 lg:mt-3">
+    <Layout bgMob={backgroundMobile} bgTablet={backgroundTablet} bgDesktop={backgroundDesktop}>
+      <div>
         {/* Section Title */}
         <div className="w-full flex flex-col items-center lg:items-start mb-3 md:mb-5 lg:ml-28 text-center lg:text-left mt-12 md:mt-16 lg:mt-0">
           <h2 className="text-base sm:text-lg md:text-xl lg:text-2xl uppercase tracking-widest">
@@ -149,7 +108,7 @@ const Destination: FC<DestinationProps> = ({ destinations }) => {
           </div>
         </div>
       </div>
-    </div>
+    </Layout>
   );
 };
 
