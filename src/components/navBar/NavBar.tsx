@@ -112,14 +112,8 @@ const NavBar = () => {
             <img src={logo} alt="logo" />
           </div>
           <div className="flex items-center relative">
-            <div
-              className="flex hidden tablet:block h-[0.01rem] bg-white w-[45rem] absolute ml-[-38rem]"
-              style={{ backgroundColor: 'rgba(255, 255, 255, 0.25)' }}
-            ></div>
-            <nav
-              className="flex items-center justify-center h-[6.125rem] tablet:w-[40rem]"
-              style={{ backgroundColor: 'rgba(255, 255, 255, 0.05)' }}
-            >
+            <div className="flex hidden tablet:block h-[0.01rem] bg-white bg-opacity-25 w-[45rem] absolute ml-[-38rem]" />
+            <nav className="flex items-center justify-center bg-white  bg-opacity-5 h-[6.125rem] tablet:w-[40rem]">
               <div className="flex items-center justify-between list-none space-x-6 text-white uppercase mr-5 ml-5 text-[1.125rem]">
                 <Link to="/">
                   <MenuItemDesktop

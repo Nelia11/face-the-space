@@ -32,30 +32,18 @@ const Layout: FC<LayoutProps> = ({ children, bgMob, bgTablet, bgDesktop }) => {
       {isLoading && (
         <>
           <div
-            className="absolute inset-0 bg-cover bg-center z-0"
-            style={{
-              backgroundImage: `url(${bgMob})`,
-              backgroundSize: 'cover',
-              backgroundRepeat: 'no-repeat'
-            }}
+            className="absolute inset-0 bg-cover bg-center bg-no-repeat "
+            style={{ backgroundImage: `url(${bgMob})` }}
           />
 
           <div
-            className="absolute inset-0 bg-cover bg-center z-0 hidden md:block lg:hidden"
-            style={{
-              backgroundImage: `url(${bgTablet})`,
-              backgroundSize: 'cover',
-              backgroundRepeat: 'no-repeat'
-            }}
+            className="absolute inset-0 bg-cover bg-center bg-no-repeat hidden md:block lg:hidden"
+            style={{ backgroundImage: `url(${bgTablet})` }}
           />
 
           <div
-            className="absolute inset-0 bg-cover bg-center z-0 hidden lg:block"
-            style={{
-              backgroundImage: `url(${bgDesktop})`,
-              backgroundSize: 'cover',
-              backgroundRepeat: 'no-repeat'
-            }}
+            className="absolute inset-0 bg-cover bg-center bg-no-repeat hidden lg:block"
+            style={{ backgroundImage: `url(${bgDesktop})` }}
           />
         </>
       )}

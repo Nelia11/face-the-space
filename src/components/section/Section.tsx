@@ -12,7 +12,7 @@ const Section: FC<SectionProps> = ({ children, pageNumber, title }) => {
       {/* Section Title */}
       <div className="text-base sm:text-lg md:text-xl lg:text-2xl uppercase tracking-widest lg:w-full phone:mb-[3rem] text-gray-400">
         <span className="text-gray-400">{`${pageNumber} `}</span>
-        <span style={{ color: '#E5E5E5' }}>{title}</span>
+        <span className="text-gray-300">{title}</span>
       </div>
       {children}
     </div>
