@@ -10,7 +10,8 @@ const Home = () => {
 
   return (
     <Layout bgMob={backgroundMobile} bgTablet={backgroundTablet} bgDesktop={backgroundDesktop}>
-      <div className="flex flex-col space-y-4 max-w-md lg:max-w-md text-center md:text-center lg:text-left px-5 lg:px-10 lg:pl-20">
+      <div className="flex flex-col space-y-4 max-w-md lg:max-w-md text-center md:text-center lg:text-left px-5 lg:px-10 lg:pl-20 lg:mt-24">
+        {/* Added lg:mt-24 to add more top margin for laptops */}
         <h2 className="text-lg md:text-xl tracking-widest text-gray-300 uppercase">
           So, you want to travel to
         </h2>
@@ -21,7 +22,8 @@ const Home = () => {
           truly out-of-this-world experience!
         </p>
       </div>
-      <div className="flex items-center justify-center mt-10 md:mt-20 lg:mt-16 lg:ml-20 lg:mr-10">
+      <div className="flex items-center justify-center mt-16 md:mt-24 lg:mt-32 lg:ml-20 lg:mr-10">
+        {/* Increased the margin-top for the button */}
         <div
           onClick={handleExploreClick}
           className="bg-white text-black w-32 h-32 md:w-40 md:h-40 lg:w-60 lg:h-60 rounded-full flex items-center justify-center cursor-pointer shadow-lg transition-transform transform hover:scale-105"
@@ -34,3 +36,4 @@ const Home = () => {
 };
 
 export default Home;
+
