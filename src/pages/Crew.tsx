@@ -7,6 +7,8 @@ import anousheh from '../assets/crew/image-anousheh-ansari.png';
 import douglas from '../assets/crew/image-douglas-hurley.png';
 import mark from '../assets/crew/image-mark-shuttleworth.png';
 import victor from '../assets/crew/image-victor-glover.png';
+import Layout from '../components/layout/Layout';
+import Section from '../components/section/Section';
 
 interface CrewProps {
   crew: CrewMember[];
@@ -43,54 +45,26 @@ const Crew: FC<CrewProps> = ({ crew }) => {
   };
 
   return (
-    <div className="relative min-h-screen w-screen bg-cover bg-center overflow-hidden font-sans">
-      {/* Background Images */}
-      <div
-        className="absolute inset-0 bg-cover bg-no-repeat"
-        style={{
-          backgroundImage: `url(${bgMobile})`
-        }}
-      ></div>
-
-      <div
-        className="absolute inset-0 bg-cover bg-no-repeat hidden md:block"
-        style={{
-          backgroundImage: `url(${bgTablet})`
-        }}
-      ></div>
-
-      <div
-        className="absolute inset-0 bg-cover bg-no-repeat hidden lg:block"
-        style={{
-          backgroundImage: `url(${bgDesktop})`
-        }}
-      ></div>
-
-      {/* Main Content */}
-      <div className="relative flex flex-col items-center justify-center lg:flex-row h-full w-full px-5 md:px-10 text-white z-10 pt-24 pb-10">
-        {/* Text Content */}
-        <div className="flex flex-col items-center lg:items-start text-center lg:text-left space-y-4 lg:space-y-6 max-w-lg lg:max-w-md px-4 lg:px-0 mt-24 md:mt-0">
-          <div className="text-gray-400 uppercase tracking-widest text-sm md:text-lg lg:text-xl">
-            <span className="mr-2">02</span> <span className="text-white">Meet your crew</span>
-          </div>
-
-          {/* Role */}
-          <p className="text-gray-300 opacity-70 uppercase tracking-wide text-sm md:text-lg lg:text-2xl min-h-[3rem]">
+    <Layout bgMob={bgMobile} bgTablet={bgTablet} bgDesktop={bgDesktop}>
+      <Section pageNumber="02" title="meet your crew">
+        {/* Role */}
+        <div className="flex flex-col gap-[0.5rem] tablet:gap-[1rem] desktop:gap-[3rem]">
+          <p className="text-sm md:text-base lg:text-[2rem] tracking-widest text-gray-300 opacity-50 uppercase mt-1 mb-1 font-heebo">
             {selectedCrewMember.role}
           </p>
 
           {/* Name */}
-          <h1 className="text-white uppercase font-bold text-2xl md:text-4xl lg:text-5xl min-h-[4rem]">
+          <p className="text-sm md:text-base lg:text-[3.5rem] uppercase leading-relaxed font-heebo">
             {selectedCrewMember.name}
-          </h1>
+          </p>
 
           {/* Bio */}
-          <p className="text-gray-200 text-base md:text-lg lg:text-xl leading-relaxed min-h-[10rem] lg:min-h-[12rem]">
+          <p className="text-[18px] leading-[27px] text-gray-100 opacity-70 font-heebo">
             {selectedCrewMember.bio}
           </p>
 
-          {/* Selection Dots */}
-          <div className="flex space-x-4 mt-5">
+          {/* Dots for crew member selection */}
+          <div className="flex space-x-4 mt-5 mb-5 justify-center lg:justify-start">
             {mappedCrew.map((_, index) => (
               <button
                 key={index}
@@ -100,23 +74,22 @@ const Crew: FC<CrewProps> = ({ crew }) => {
                     ? 'bg-white scale-125 opacity-100'
                     : 'bg-gray-500 opacity-50'
                 }`}
-              ></button>
+              />
             ))}
           </div>
         </div>
+      </Section>
 
-        {/* Image */}
-        <div className="mt-10 lg:mt-0 lg:ml-20 flex justify-center">
-          <img
-            src={selectedCrewMember.image.png}
-            alt={selectedCrewMember.name}
-            className="w-60 h-60 md:w-72 md:h-72 lg:w-96 lg:h-96 object-contain transition-transform duration-300"
-          />
-        </div>
+      {/* Image */}
+      <div className="mt-10 lg:mt-0 lg:ml-20 flex justify-center">
+        <img
+          src={selectedCrewMember.image.png}
+          alt={selectedCrewMember.name}
+          className="w-60 h-60 md:w-72 md:h-72 lg:w-96 lg:h-96 object-contain transition-transform duration-300"
+        />
       </div>
-    </div>
+    </Layout>
   );
 };
 
 export default Crew;
-
